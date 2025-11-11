@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nandhan A — Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: {
+              DEFAULT: '#14b8a6'
+            }
+          },
+          boxShadow: {
+            soft: '0 1px 2px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+   body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+   /* Animated background blobs */
+   .bg-ornaments{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+   .bg-ornaments .blob{position:absolute;filter:blur(60px);opacity:.45;will-change:transform}
+   .blob-1{width:36rem;height:36rem;background:radial-gradient(circle at 30% 30%,#a5b4fc,transparent 60%),radial-gradient(circle at 70% 70%,#99f6e4,transparent 55%);left:-10%;top:-10%;animation:float1 22s ease-in-out infinite}
+   .blob-2{width:32rem;height:32rem;background:radial-gradient(circle at 70% 30%,#93c5fd,transparent 60%),radial-gradient(circle at 20% 80%,#c4b5fd,transparent 55%);right:-8%;top:10%;animation:float2 26s ease-in-out infinite}
+   .blob-3{width:28rem;height:28rem;background:radial-gradient(circle at 50% 50%,#bae6fd,transparent 55%),radial-gradient(circle at 40% 40%,#e9d5ff,transparent 55%);left:20%;bottom:-15%;animation:float3 28s ease-in-out infinite}
+   @keyframes float1{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(20px,30px,0)}}
+   @keyframes float2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-30px,10px,0)}}
+   @keyframes float3{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(15px,-20px,0)}}
+   .dark .blob-1{background:radial-gradient(circle at 30% 30%,#6366f1,transparent 60%),radial-gradient(circle at 70% 70%,#14b8a6,transparent 55%)}
+   .dark .blob-2{background:radial-gradient(circle at 70% 30%,#38bdf8,transparent 60%),radial-gradient(circle at 20% 80%,#8b5cf6,transparent 55%)}
+   .dark .blob-3{background:radial-gradient(circle at 50% 50%,#0ea5e9,transparent 55%),radial-gradient(circle at 40% 40%,#7c3aed,transparent 55%)}
+   @media (prefers-reduced-motion: reduce){
+     .blob-1,.blob-2,.blob-3{animation:none}
+   }
+   /* Hover and reveal effects */
+   .animated-card{transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease}
+   .animated-card:hover{transform:translateY(-2px);box-shadow:0 2px 10px rgba(0,0,0,.06),0 12px 28px rgba(0,0,0,.08)}
+   .chip-anim{transition:transform .2s ease, background-color .2s ease, box-shadow .2s ease}
+   .chip-anim:hover{transform:translateY(-1px)}
+   .reveal{opacity:0;transform:translateY(12px);transition:opacity .7s ease, transform .7s ease}
+   .reveal.in{opacity:1;transform:none}
+   /* Page load fade-in */
+   .fade-root{opacity:1;transform:none;transition:opacity .6s ease, transform .6s ease}
+   body.preload .fade-root{opacity:0;transform:translateY(8px)}
+   /* Section title accent */
+   .section-title{position:relative;padding-left:.8rem}
+   .section-title:before{content:"";position:absolute;left:0;top:.35rem;bottom:.35rem;width:4px;border-radius:9999px;background:linear-gradient(180deg,#14b8a6,rgba(20,184,166,.25))}
+   .dark .section-title:before{background:linear-gradient(180deg,#14b8a6,rgba(20,184,166,.35))}
+   /* SVG section divider */
+   .section-divider{display:none;height:44px;opacity:.85}
+   .section-divider svg{display:block;width:100%;height:44px}
+   /* Floating particles */
+   .particle{position:absolute;width:8px;height:8px;border-radius:9999px;background:radial-gradient(circle,#93c5fd,transparent 70%);opacity:.55;animation:particleFloat 20s linear infinite}
+   .dark .particle{background:radial-gradient(circle,#38bdf8,transparent 70%)}
+   @keyframes particleFloat{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-15px) translateX(8px)}100%{transform:translateY(0) translateX(0)}}
+  /* --- Reveal on Scroll Animation Fix --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Card Hover Animation --- */
+.animated-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.animated-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Chip Hover Animation --- */
+.chip-anim {
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+.chip-anim:hover {
+  transform: scale(1.05);
+}
+
+/* Optional soft glow for interactive cards */
+.animated-card:hover {
+  box-shadow: 0 12px 30px rgba(0, 255, 200, 0.15);
+}
+
+  </style>
+  </head>
+<body class="preload bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <div aria-hidden="true" class="bg-ornaments">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3" id="parallax-blob"></span>
+    <!-- lightweight floating particles -->
+    <span class="particle" style="left:10%;top:20%;"></span>
+    <span class="particle" style="left:25%;top:70%;animation-duration:18s"></span>
+    <span class="particle" style="left:60%;top:15%;animation-duration:22s"></span>
+    <span class="particle" style="left:75%;top:60%;animation-duration:24s"></span>
+    <span class="particle" style="left:85%;top:30%;animation-duration:26s"></span>
+    <span class="particle" style="left:40%;top:40%;animation-duration:20s"></span>
+  </div>
+  <header class="fade-root sticky top-0 z-50 backdrop-blur bg-white/80 dark:bg-slate-950/70 border-b border-slate-200/60 dark:border-slate-800/60">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#top" class="font-semibold tracking-tight text-lg">Nandhan <span class="text-accent">A</span></a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#about" class="hover:text-accent transition-colors">About</a>
+          <a href="#education" class="hover:text-accent transition-colors">Education</a>
+          <a href="#skills" class="hover:text-accent transition-colors">Skills</a>
+          <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
+          <a href="#achievements" class="hover:text-accent transition-colors">Achievements</a>
+          <a href="#certifications" class="hover:text-accent transition-colors">Certifications</a>
+          <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" aria-label="Toggle theme" class="p-2 rounded-md border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition">
+            <i class="ri-moon-line hidden dark:inline text-lg"></i>
+            <i class="ri-sun-line inline dark:hidden text-lg"></i>
+          </button>
+          <a href="D:\Portfolio\Nandhan_A_resume.pdf" download class="hidden sm:inline px-3 py-2 text-sm rounded-md border border-accent text-accent hover:bg-accent hover:text-white transition">Download Resume</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="fade-root max-w-5xl mx-auto px-4 py-10 md:py-14">
+    <section id="about" class="mb-8">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft p-6 md:p-8 bg-white dark:bg-slate-950">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">Nandhan A</h1>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 max-w-3xl">Currently pursuing a Bachelor of Engineering in Computer Science at Chennai Institute of Technology (CIT), with a CGPA of 7.44 up to Semester 3. Passionate about technology, problem-solving, and software development. Skilled in Python, Java, web and app development, and databases, with a growing interest in creating practical solutions for real-world problems.</p>
+            <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
+              <a href="tel:+917845464720" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition"><i class="ri-phone-line text-accent"></i><span>+91 7845464720</span></a>
+              <a href="mailto:nandhana.cse2024@citchennai.net" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition"><i class="ri-mail-line text-accent"></i><span>nandhana.cse2024@citchennai.net</span></a>
+              <a href="https://github.com/A-Nandhan" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition"><i class="ri-github-line text-accent"></i><span>A-Nandhan</span></a>
+              <a id="linkedin-link" href="https://www.linkedin.com/in/nandhan-a-98924032a/" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition"><i class="ri-linkedin-box-line text-accent"></i><span>LinkedIn</span></a>
+            </div>
+          </div>
+          <div class="shrink-0">
+            <a href="D:\Portfolio\Nandhan_A_resume.pdf" download class="px-4 py-2.5 rounded-xl bg-accent text-white hover:opacity-90 transition inline-flex items-center gap-2"><i class="ri-download-2-line"></i><span>Download Resume</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="section-divider" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0%" stop-color="#e2e8f0"/><stop offset="100%" stop-color="#c7d2fe"/></linearGradient></defs><path d="M0,64 C240,16 480,16 720,48 C960,80 1200,80 1440,48 L1440,80 L0,80 Z" fill="url(#g)" fill-opacity="0.35"/></svg>
+    </div>
+
+    <section id="education" class="mb-8">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft p-6 md:p-8 bg-white dark:bg-slate-950">
+        <h2 class="section-title text-xl font-semibold mb-4">Education</h2>
+        <div class="space-y-5">
+          <div class="grid md:grid-cols-5 gap-2 md:gap-6 p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:shadow-soft transition">
+            <div class="md:col-span-3">
+              <p class="font-medium">B.E. Computer Science and Engineering</p>
+              <p class="text-slate-600 dark:text-slate-400">Chennai Institute of Technology, Chennai</p>
+            </div>
+            <div class="md:col-span-2 md:text-right">
+              <p>2024–Present</p>
+              <p class="text-slate-600 dark:text-slate-400">CGPA: 7.44 / 10</p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-5 gap-2 md:gap-6 p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:shadow-soft transition">
+            <div class="md:col-span-3">
+              <p class="font-medium">Higher Secondary Education (11th and 12th)</p>
+              <p class="text-slate-600 dark:text-slate-400">Sacred Heart Convent, Villupuram, Tamil Nadu</p>
+            </div>
+            <div class="md:col-span-2 md:text-right">
+              <p>2021–2023</p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-5 gap-2 md:gap-6 p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:shadow-soft transition">
+            <div class="md:col-span-3">
+              <p class="font-medium">Secondary Education (10th)</p>
+              <p class="text-slate-600 dark:text-slate-400">Sacred Heart Convent, Villupuram, Tamil Nadu</p>
+            </div>
+            <div class="md:col-span-2 md:text-right">
+              <p>2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="section-divider" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,64 C240,16 480,16 720,48 C960,80 1200,80 1440,48 L1440,80 L0,80 Z" fill="#e2e8f0" fill-opacity="0.30"/></svg>
+    </div>
+
+    <section id="skills" class="mb-8">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft p-6 md:p-8 bg-white dark:bg-slate-950">
+        <h2 class="section-title text-xl font-semibold mb-4">Skills</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+            <p class="font-medium mb-2">Programming</p>
+            <p class="text-slate-700 dark:text-slate-300">Python, Java</p>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+            <p class="font-medium mb-2">Web Development</p>
+            <p class="text-slate-700 dark:text-slate-300">HTML, CSS, JavaScript, React JS</p>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+            <p class="font-medium mb-2">App Development</p>
+            <p class="text-slate-700 dark:text-slate-300">Flutter</p>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+            <p class="font-medium mb-2">Databases</p>
+            <p class="text-slate-700 dark:text-slate-300">MongoDB, MySQL</p>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-100 dark:border-slate-800 md:col-span-2">
+            <p class="font-medium mb-2">Other</p>
+            <p class="text-slate-700 dark:text-slate-300">Git, Problem Solving, Teamwork</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="section-divider" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,64 C240,16 480,16 720,48 C960,80 1200,80 1440,48 L1440,80 L0,80 Z" fill="#e2e8f0" fill-opacity="0.25"/></svg>
+    </div>
+
+    <section id="projects" class="mb-8">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft p-6 md:p-8 bg-white dark:bg-slate-950">
+        <h2 class="section-title text-xl font-semibold mb-4">Projects</h2>
+        <div class="grid gap-4">
+          <article class="p-5 rounded-xl border border-slate-100 dark:border-slate-800 hover:shadow-soft transition">
+            <h3 class="font-semibold">Automated Abstracting and Summarization Engine for Academic Papers</h3>
+            <p class="mt-2 text-slate-700 dark:text-slate-300">Developed a system to automatically summarize and generate concise abstracts for academic papers using NLP techniques. Focused on improving research accessibility and saving time for students and professionals.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <div class="section-divider" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,64 C240,16 480,16 720,48 C960,80 1200,80 1440,48 L1440,80 L0,80 Z" fill="#e2e8f0" fill-opacity="0.25"/></svg>
+    </div>
+
+    <section id="achievements" class="mb-8">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft p-6 md:p-8 bg-white dark:bg-slate-950">
+        <h2 class="section-title text-xl font-semibold mb-4">Achievements</h2>
+        <ul class="space-y-2 list-disc pl-5 text-slate-700 dark:text-slate-300">
+          <li>Solved 50+ problems on LeetCode.</li>
+          <li>Completed MongoDB certification.</li>
+          <li>Completed internship at Zero2Skills as a web development intern.</li>
+        </ul>
+      </div>
+    </section>
+    <div class="section-divider" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,64 C240,16 480,16 720,48 C960,80 1200,80 1440,48 L1440,80 L0,80 Z" fill="#e2e8f0" fill-opacity="0.25"/></svg>
+    </div>
+
+    <section id="certifications" class="mb-8">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft p-6 md:p-8 bg-white dark:bg-slate-950">
+        <h2 class="section-title text-xl font-semibold mb-4">Certifications</h2>
+        <ul class="space-y-2 list-disc pl-5 text-slate-700 dark:text-slate-300">
+          <li>MongoDB Certified</li>
+          <li>Internship Certificate – Zero2Skills</li>
+        </ul>
+      </div>
+    </section>
+    <div class="section-divider" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,64 C240,16 480,16 720,48 C960,80 1200,80 1440,48 L1440,80 L0,80 Z" fill="#e2e8f0" fill-opacity="0.25"/></svg>
+    </div>
+
+    
+    <section id="contact" class="mb-8">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 shadow-soft p-6 md:p-8 bg-white dark:bg-slate-950">
+        <h2 class="section-title text-xl font-semibold mb-4">Contact</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a href="mailto:nandhana.cse2024@citchennai.net" class="p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:shadow-soft transition inline-flex items-center gap-3"><i class="ri-mail-line text-accent text-xl"></i><span>nandhana.cse2024@citchennai.net</span></a>
+          <a href="tel:+917845464720" class="p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:shadow-soft transition inline-flex items-center gap-3"><i class="ri-phone-line text-accent text-xl"></i><span>+91 7845464720</span></a>
+          <a href="https://github.com/A-Nandhan" target="_blank" rel="noreferrer" class="p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:shadow-soft transition inline-flex items-center gap-3"><i class="ri-github-line text-accent text-xl"></i><span>github.com/A-Nandhan</span></a>
+          <a id="linkedin-card" href="#" class="p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:shadow-soft transition inline-flex items-center gap-3"><i class="ri-linkedin-box-line text-accent text-xl"></i><span>LinkedIn</span></a>
+           
+      </div>
+    </section>
+  </main>
+
+  <footer class="fade-root py-8 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <p>© <span id="year"></span> Nandhan A</p>
+      <div class="flex items-center gap-4">
+        <a href="mailto:nandhana.cse2024@citchennai.net" class="hover:text-accent">Email</a>
+        <a href="https://github.com/A-Nandhan" target="_blank" rel="noreferrer" class="hover:text-accent">GitHub</a>
+        <a id="linkedin-footer" href="https://www.linkedin.com/in/nandhan-a-98924032a/" class="hover:text-accent"
+        >LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+ 
