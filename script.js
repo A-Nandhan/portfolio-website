@@ -1,7 +1,17 @@
 const yearEl=document.getElementById("year");if(yearEl)yearEl.textContent=new Date().getFullYear();
 const prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;const stored=localStorage.getItem('theme');if(stored==='dark'||(!stored&&prefersDark))document.documentElement.classList.add('dark');
 const toggle=document.getElementById('theme-toggle');if(toggle){toggle.addEventListener('click',()=>{document.documentElement.classList.toggle('dark');localStorage.setItem('theme',document.documentElement.classList.contains('dark')?'dark':'light');});}
-const linkedinUrl='';const linkedinEls=[document.getElementById('linkedin-link'),document.getElementById('linkedin-card'),document.getElementById('linkedin-footer')];linkedinEls.forEach(el=>{const linkedinUrl = 'https://www.linkedin.com/in/nandhan-a-98924032a/';
+const linkedinProfile='https://www.linkedin.com/in/nandhan-a-98924032a/';
+const linkedinEls=[
+  document.getElementById('linkedin-link'),
+  document.getElementById('linkedin-card'),
+  document.getElementById('linkedin-footer')
+];
+linkedinEls.forEach(el=>{
+  if(!el) return;
+  el.setAttribute('href', linkedinProfile);
+  el.setAttribute('target','_blank');
+  el.setAttribute('rel','noopener noreferrer');
 });
 window.addEventListener('load', () => {
   document.body.classList.remove('preload');
